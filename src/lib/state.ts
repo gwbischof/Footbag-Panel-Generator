@@ -53,7 +53,7 @@ function collect(el: DOMElements, layoutEl?: any): SettingsData {
     stitches: INPUT_VALIDATORS.stitches(el.stitches?.value || '8'),
     showGrid: el.showGrid ? !!el.showGrid.checked : undefined,
     cornerMargin: el.cornerMargin ? clamp(parseFloat(el.cornerMargin.value), 0, 999) : undefined,
-    holeSpacing: el.holeSpacing ? clamp(parseFloat(el.holeSpacing.value), 1, 999) : undefined,
+    holeSpacing: el.holeSpacingNumber ? clamp(parseFloat((el.holeSpacingNumber as HTMLInputElement).value), 1, 999) : (el.holeSpacing ? clamp(parseFloat(el.holeSpacing.value), 1, 999) : undefined),
     holeBunching: el.holeBunching ? clamp(parseFloat(el.holeBunching.value), 0, 999) : undefined,
     dotSize: INPUT_VALIDATORS.dotSize(el.dotSize?.value || '1'),
     starRootOffset: el.starRootOffset ? INPUT_VALIDATORS.starRootOffset(el.starRootOffset.value) : undefined,

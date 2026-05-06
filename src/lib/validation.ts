@@ -157,8 +157,9 @@ export function updateDynamicConstraints(config: UIConfig, geometry: GeometryRes
     el.holeSpacingNumber?.setAttribute('max', maxStr);
   }
   
-  const holeSpacing = el.holeSpacing ?
-    INPUT_VALIDATORS.holeSpacing(el.holeSpacing.value, allowableSpacing) : 3;
+  const holeSpacing = el.holeSpacingNumber ?
+    INPUT_VALIDATORS.holeSpacing(el.holeSpacingNumber.value, allowableSpacing) :
+    (el.holeSpacing ? INPUT_VALIDATORS.holeSpacing(el.holeSpacing.value, allowableSpacing) : 3);
 
   // Update holeBunching max to be half of holeSpacing
   const bunchingMax = holeSpacing / 2;
