@@ -4,17 +4,24 @@
   "title": "Footbag Panel Settings",
   "type": "object",
   "properties": {
+    "$schema": { "type": "string" },
     "version": { "type": "integer" },
-    "shape": { "type": "integer", "enum": [3,4,5,6] },
+    "shape": { "type": "integer", "enum": [3, 4, 5, 6] },
     "curved": { "type": "boolean" },
-  "curveRadius": { "type": "number", "minimum": 10, "maximum": 130 },
+    "curveRadius": { "type": "number", "minimum": 10, "maximum": 130 },
     "side": { "type": "number", "minimum": 10, "maximum": 80 },
-  "seam": { "type": "number", "minimum": 2, "maximum": 9 },
+    "seam": { "type": "number", "minimum": 2, "maximum": 9 },
+    "showHoles": { "type": "boolean" },
     "stitches": { "type": "integer", "minimum": 1, "maximum": 50 },
     "showGrid": { "type": "boolean" },
     "cornerMargin": { "type": "number", "minimum": 0 },
     "holeSpacing": { "type": "number", "minimum": 1 },
+    "holeBunching": { "type": "number", "minimum": 0 },
     "dotSize": { "type": "number", "minimum": 0.2, "maximum": 1.5 },
+    "starRootOffset": { "type": "number", "minimum": -3, "maximum": 1 },
+    "starRootAngle": { "type": "number", "minimum": 100, "maximum": 150 },
+    "cornerStitchSpacing": { "type": "boolean" },
+    "cornerStitchDistance": { "type": "number", "minimum": 0.5, "maximum": 10 },
     "hex": {
       "type": "object",
       "properties": {
@@ -23,8 +30,23 @@
         "ratio": { "type": "number", "minimum": 0.1, "maximum": 0.9 }
       },
       "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "padding": { "type": "number", "minimum": 0, "maximum": 50 },
+        "rows": { "type": "integer", "minimum": 1, "maximum": 16 },
+        "cols": { "type": "integer", "minimum": 1, "maximum": 16 },
+        "hSpace": { "type": "number", "minimum": -20, "maximum": 50 },
+        "vSpace": { "type": "number", "minimum": 0, "maximum": 50 },
+        "invert": { "type": "boolean" },
+        "nestingOffset": { "type": "number", "minimum": -40, "maximum": 40 },
+        "showGrid": { "type": "boolean" }
+      },
+      "required": ["padding", "rows", "cols", "hSpace", "vSpace", "invert", "nestingOffset"],
+      "additionalProperties": false
     }
   },
-  "required": ["version", "shape", "curved", "side", "seam", "stitches", "dotSize", "hex"],
+  "required": ["version", "shape", "curved", "side", "seam", "stitches", "dotSize", "hex", "layout"],
   "additionalProperties": false
 }
